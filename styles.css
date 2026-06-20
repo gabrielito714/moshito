@@ -1,0 +1,184 @@
+/* Variables de color Cyber-Cute */
+:root {
+    --bg-dark: #0d081b;
+    --neon-pink: #ff79c6;
+    --neon-cyan: #8be9fd;
+    --soft-purple: #bd93f9;
+    --text-white: #f8f8f2;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    font-family: 'Comfortaa', cursive;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    perspective: 1000px;
+}
+
+/* Fondo espacial difuminado */
+.space-background {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at center, #281845 0%, #0d081b 100%);
+    z-index: -1;
+}
+
+/* Tarjeta Principal */
+.card-container {
+    background: rgba(20, 15, 38, 0.7);
+    border: 2px solid var(--soft-purple);
+    box-shadow: 0 0 25px rgba(189, 147, 249, 0.3), inset 0 0 15px rgba(189, 147, 249, 0.2);
+    border-radius: 24px;
+    padding: 40px 30px;
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transform: rotateX(5px);
+    transition: transform 0.3s ease;
+}
+
+/* Efecto Holograma de Mascota */
+.hologram-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 30px;
+}
+
+.pet-egg {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, var(--neon-cyan), var(--neon-pink));
+    border-radius: 50% 50% 43% 43% / 60% 60% 40% 40%; /* Forma de huevo/criatura */
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: float 3s ease-in-out infinite, pulseGlow 1.5s ease-in-out infinite alternate;
+    position: relative;
+    z-index: 2;
+}
+
+.heart-core {
+    font-size: 2rem;
+    animation: heartbeat 0.8s infinite alternate;
+}
+
+.hologram-glow {
+    position: absolute;
+    bottom: -10px; left: 10%; width: 80%; height: 20px;
+    background: radial-gradient(ellipse, rgba(139, 233, 253, 0.6) 0%, rgba(139, 233, 253, 0) 70%);
+    animation: shadowScale 3s ease-in-out infinite;
+}
+
+/* Texto de la Ventana */
+.glitch-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    color: var(--neon-cyan);
+    margin-bottom: 15px;
+    text-shadow: 0 0 8px var(--neon-cyan);
+}
+
+.text-window {
+    min-height: 120px;
+    margin-bottom: 30px;
+}
+
+.message-text {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #e2d7f7;
+}
+
+/* Botones */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
+}
+
+.btn {
+    padding: 15px 25px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Comfortaa', cursive;
+    transition: all 0.2s ease;
+    border: none;
+    outline: none;
+}
+
+.btn-neon {
+    background: linear-gradient(90deg, var(--neon-pink), var(--soft-purple));
+    color: white;
+    box-shadow: 0 0 15px rgba(255, 121, 198, 0.4);
+}
+
+.btn-neon:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(255, 121, 198, 0.8);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: #6272a4;
+    border: 1px solid #44475a;
+    position: relative; /* Importante para el movimiento en JS */
+}
+
+.btn-disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    filter: grayscale(40%);
+}
+
+.btn-disabled:hover {
+    transform: none;
+    box-shadow: 0 0 15px rgba(255, 121, 198, 0.4);
+}
+
+.typing-cursor {
+    display: inline-block;
+    color: var(--neon-cyan);
+    animation: blink 0.8s step-end infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* --- ANIMACIONES --- */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+@keyframes shadowScale {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(0.7); opacity: 0.2; }
+}
+
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 10px rgba(139, 233, 253, 0.5); }
+    100% { box-shadow: 0 0 25px rgba(255, 121, 198, 0.7); }
+}
+
+@keyframes heartbeat {
+    to { transform: scale(1.2); }
+}
